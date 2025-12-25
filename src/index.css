@@ -1,0 +1,119 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-primary-bg text-text-primary font-sans antialiased;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display;
+  }
+}
+
+@layer utilities {
+  .transition-theme {
+    @apply transition-all duration-700 ease-in-out;
+  }
+
+  .animate-scroll {
+    animation: scroll 30s linear infinite;
+  }
+
+  @keyframes scroll {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+}
+
+/* Print Styles */
+@media print {
+  /* Ensure good page breaks */
+  .no-page-break {
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+
+  /* Keep sections together */
+  h1, h2, h3, h4, h5, h6 {
+    page-break-after: avoid;
+    break-after: avoid;
+  }
+
+  /* Avoid breaking these elements */
+  img, figure, table, pre {
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+
+  /* Remove shadows and effects for cleaner print */
+  * {
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+
+  /* Ensure white background for print */
+  body {
+    background: white !important;
+  }
+
+  /* Hide navigation and unnecessary elements */
+  nav, footer, button:not(.print-keep) {
+    display: none !important;
+  }
+
+  /* Ensure black text on white for print */
+  body, p, h1, h2, h3, h4, h5, h6, span, div, li {
+    color: #000 !important;
+  }
+
+  /* Keep accent colors for branding */
+  .text-accent-gold {
+    color: #d4a574 !important;
+  }
+
+  /* Adjust card backgrounds for print */
+  .bg-black\/80, .bg-black\/60, .bg-primary-bgSecondary,
+  .bg-gradient-to-br, [class*="bg-accent-gold"] {
+    background: white !important;
+    border: 1px solid #ddd !important;
+  }
+
+  /* Ensure content is visible */
+  .backdrop-blur-sm, .backdrop-blur-md {
+    backdrop-filter: none !important;
+  }
+
+  /* Fix progress bars for print */
+  .bg-white\/10 {
+    background: #f5f5f5 !important;
+  }
+
+  /* Page break control for major sections */
+  .print-section {
+    page-break-before: auto;
+    page-break-after: auto;
+    page-break-inside: avoid;
+  }
+
+  /* Orphan and widow control */
+  p {
+    orphans: 3;
+    widows: 3;
+  }
+
+  /* Ensure proper margins for print */
+  @page {
+    margin: 0.5in;
+  }
+
+  /* Use black logo for print */
+  header img[alt="1712 Studios"] {
+    content: url("/images/1712 Logo black.png") !important;
+  }
+}

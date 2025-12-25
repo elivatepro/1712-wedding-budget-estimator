@@ -1,0 +1,211 @@
+// Seattle wedding budget ranges (Balanced tier baseline)
+export const budgetCategories = {
+  venue: {
+    name: 'Venue',
+    description: 'Ceremony & reception space, rentals',
+    baseMin: 3000,
+    baseMax: 15000,
+    perPerson: false,
+    icon: '🏛️',
+  },
+  catering: {
+    name: 'Catering',
+    description: 'Food, beverages, service staff',
+    baseMin: 75,
+    baseMax: 200,
+    perPerson: true,
+    icon: '🍽️',
+  },
+  photography: {
+    name: 'Photography',
+    description: 'Photographer, hours of coverage, albums',
+    baseMin: 3000,
+    baseMax: 8000,
+    perPerson: false,
+    icon: '📷',
+  },
+  videography: {
+    name: 'Videography',
+    description: 'Videographer, highlight reel, full edit',
+    baseMin: 2000,
+    baseMax: 6000,
+    perPerson: false,
+    icon: '🎥',
+  },
+  flowers: {
+    name: 'Flowers & Decor',
+    description: 'Bouquets, centerpieces, installations',
+    baseMin: 2000,
+    baseMax: 10000,
+    perPerson: false,
+    icon: '💐',
+  },
+  music: {
+    name: 'Music/DJ',
+    description: 'DJ or live band, sound equipment',
+    baseMin: 1200,
+    baseMax: 5000,
+    perPerson: false,
+    icon: '🎵',
+  },
+  officiant: {
+    name: 'Officiant',
+    description: 'Ceremony officiant, rehearsal',
+    baseMin: 300,
+    baseMax: 800,
+    perPerson: false,
+    icon: '👔',
+  },
+  attire: {
+    name: 'Attire',
+    description: 'Wedding dress, suit, alterations',
+    baseMin: 2000,
+    baseMax: 8000,
+    perPerson: false,
+    icon: '👗',
+  },
+  hairMakeup: {
+    name: 'Hair & Makeup',
+    description: 'Styling for wedding party',
+    baseMin: 500,
+    baseMax: 2000,
+    perPerson: false,
+    icon: '💄',
+  },
+  invitations: {
+    name: 'Invitations',
+    description: 'Save-the-dates, invites, programs',
+    baseMin: 300,
+    baseMax: 1500,
+    perPerson: false,
+    icon: '💌',
+  },
+  transportation: {
+    name: 'Transportation',
+    description: 'Limos, shuttles, valet',
+    baseMin: 500,
+    baseMax: 2000,
+    perPerson: false,
+    icon: '🚗',
+  },
+  cake: {
+    name: 'Cake & Desserts',
+    description: 'Wedding cake, dessert bar',
+    baseMin: 500,
+    baseMax: 1500,
+    perPerson: false,
+    icon: '🎂',
+  },
+  favors: {
+    name: 'Favors',
+    description: 'Guest gifts and favors',
+    baseMin: 2,
+    baseMax: 10,
+    perPerson: true,
+    icon: '🎁',
+  },
+  rentals: {
+    name: 'Rentals',
+    description: 'Extra chairs, linens, lighting',
+    baseMin: 1000,
+    baseMax: 5000,
+    perPerson: false,
+    icon: '🪑',
+  },
+  miscellaneous: {
+    name: 'Miscellaneous',
+    description: 'Tips, marriage license, extras',
+    baseMin: 1000,
+    baseMax: 3000,
+    perPerson: false,
+    icon: '📋',
+  },
+}
+
+// Budget tier multipliers
+export const budgetTiers = {
+  essential: {
+    name: 'Essential',
+    description: 'Budget-conscious choices, prioritizing necessities',
+    multiplier: 0.7,
+  },
+  balanced: {
+    name: 'Balanced',
+    description: 'Mid-range options with quality and value',
+    multiplier: 1.0,
+  },
+  premium: {
+    name: 'Premium',
+    description: 'High-end vendors and luxury experiences',
+    multiplier: 1.5,
+  },
+}
+
+// Wedding style configurations
+export const weddingStyles = {
+  intimate: {
+    name: 'Intimate/Elopement',
+    description: 'Soft, romantic aesthetic with muted tones',
+    suggestedGuestRange: { min: 2, max: 30 },
+    priceAdjustment: 0.85, // Generally lower costs for smaller weddings
+    theme: {
+      bgColor: '#faf7f5',
+      textColor: '#5a4a42',
+      accentColor: '#d4a5a5',
+      secondaryColor: '#8b9a8c',
+    },
+    image: '/images/Silhouette of Man and Woman Embracing.jpg',
+  },
+  classic: {
+    name: 'Classic/Traditional',
+    description: 'Elegant, timeless look with sophisticated typography',
+    suggestedGuestRange: { min: 50, max: 150 },
+    priceAdjustment: 1.0,
+    theme: {
+      bgColor: '#f5f5dc',
+      textColor: '#1e3a5f',
+      accentColor: '#d4a574',
+      secondaryColor: '#2c3e50',
+    },
+    image: '/images/Dining Hall Interior.jpg',
+  },
+  modern: {
+    name: 'Modern/Minimalist',
+    description: 'Clean lines, monochromatic palette, contemporary feel',
+    suggestedGuestRange: { min: 30, max: 100 },
+    priceAdjustment: 1.0,
+    theme: {
+      bgColor: '#ffffff',
+      textColor: '#000000',
+      accentColor: '#666666',
+      secondaryColor: '#333333',
+    },
+    image: '/images/Man And Woman Kissing.jpg',
+  },
+  bohemian: {
+    name: 'Bohemian/Rustic',
+    description: 'Earthy colors, organic textures, natural elements',
+    suggestedGuestRange: { min: 40, max: 120 },
+    priceAdjustment: 0.95,
+    theme: {
+      bgColor: '#fef9f3',
+      textColor: '#4a3f35',
+      accentColor: '#c9a66b',
+      secondaryColor: '#81894f',
+    },
+    image: '/images/woman holding flower.jpg',
+  },
+  luxury: {
+    name: 'Grand/Luxury',
+    description: 'Opulent design with gold accents and rich colors',
+    suggestedGuestRange: { min: 100, max: 250 },
+    priceAdjustment: 1.2, // Luxury weddings typically cost more
+    theme: {
+      bgColor: '#0a0a0a',
+      textColor: '#ffffff',
+      accentColor: '#d4a574',
+      secondaryColor: '#f5f5dc',
+    },
+    image: '/images/White Pink Floral Wedding Decoration.jpg',
+  },
+}
