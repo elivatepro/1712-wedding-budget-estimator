@@ -49,8 +49,8 @@ const LeadCapture = () => {
       // Store lead info in state
       setLeadInfo(formData)
 
-      // TODO: Replace with your actual webhook URL
-      const webhookUrl = process.env.VITE_WEBHOOK_URL || ''
+      // Get webhook URL from environment variable
+      const webhookUrl = import.meta.env.VITE_WEBHOOK_URL || ''
 
       if (webhookUrl) {
         // Send data to webhook
