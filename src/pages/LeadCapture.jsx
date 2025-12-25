@@ -45,14 +45,14 @@ const LeadCapture = () => {
 
     setIsSubmitting(true)
 
-    try {
-      // Store lead info in state
-      setLeadInfo(formData)
+    // Store lead info in state
+    setLeadInfo(formData)
 
-      // Get webhook URL from environment variable
-      const webhookUrl = import.meta.env.VITE_WEBHOOK_URL || ''
+    // Get webhook URL from environment variable
+    const webhookUrl = import.meta.env.VITE_WEBHOOK_URL || ''
 
-      if (webhookUrl) {
+    if (webhookUrl) {
+      try {
         // Send data to webhook
         const store = useWeddingStore.getState()
         const webhookData = {
@@ -66,23 +66,27 @@ const LeadCapture = () => {
           timestamp: new Date().toISOString(),
         }
 
+        console.log('Sending webhook data:', webhookData)
+
         await fetch(webhookUrl, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
           },
           body: JSON.stringify(webhookData),
+          mode: 'no-cors', // Zapier webhooks don't return CORS headers
         })
-      }
 
-      // Continue to results page
-      setCurrentStep(5)
-      navigate('/results')
-    } catch (err) {
-      console.error('Error submitting form:', err)
-      setError('Something went wrong. Please try again.')
-      setIsSubmitting(false)
+        console.log('Webhook sent successfully')
+      } catch (webhookError) {
+        // Log webhook error but don't block the user flow
+        console.error('Webhook error (non-blocking):', webhookError)
+      }
     }
+
+    // Continue to results page regardless of webhook status
+    setCurrentStep(5)
+    navigate('/results')
   }
 
   const handleBack = () => {
